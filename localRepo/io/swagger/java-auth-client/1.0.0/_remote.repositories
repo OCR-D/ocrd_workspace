@@ -1,0 +1,7 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Fri Dec 21 12:51:06 CET 2018
+java-auth-client-1.0.0-tests.jar>=
+java-auth-client-1.0.0-javadoc.jar>=
+java-auth-client-1.0.0.jar>=
+java-auth-client-1.0.0-sources.jar>=
+java-auth-client-1.0.0.pom>=

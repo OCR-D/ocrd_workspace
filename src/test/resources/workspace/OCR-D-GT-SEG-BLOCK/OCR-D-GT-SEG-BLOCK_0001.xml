@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pc:PcGts xmlns:pc="http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15">
+    <pc:Metadata>
+        <pc:Creator>Deutsches Textarchiv</pc:Creator>
+        <pc:Created>2018-03-22T08:29:37</pc:Created>
+        <pc:LastChange>2019-08-05T15:13:29</pc:LastChange>
+    </pc:Metadata>
+    <pc:Page imageFilename="OCR-D-IMG/OCR-D-IMG_0001.jpg" imageWidth="1995" imageHeight="3263" type="title">
+        <pc:Border>
+            <pc:Coords points="1968,3224 1968,12 44,12 44,3224"/>
+        </pc:Border>
+        <pc:ReadingOrder>
+            <pc:OrderedGroup id="ro357564684568544579089" caption="Regions reading order">
+                <pc:RegionRefIndexed index="0" regionRef="r0"/>
+                <pc:RegionRefIndexed index="1" regionRef="r1"/>
+                <pc:RegionRefIndexed index="2" regionRef="r2"/>
+            </pc:OrderedGroup>
+        </pc:ReadingOrder>
+        <pc:TextRegion id="r0" type="paragraph">
+            <pc:Coords points="1706,1375 1706,425 162,425 162,1375"/>
+            <pc:TextEquiv>
+                <pc:Unicode></pc:Unicode>
+            </pc:TextEquiv>
+        </pc:TextRegion>
+        <pc:TextRegion id="r1" type="paragraph">
+            <pc:Coords points="318,1443 318,1931 1593,1931 1593,1443"/>
+            <pc:TextEquiv>
+                <pc:Unicode></pc:Unicode>
+            </pc:TextEquiv>
+        </pc:TextRegion>
+        <pc:TextRegion id="r2" type="paragraph">
+            <pc:Coords points="1471,2996 1471,2642 364,2642 364,2996"/>
+            <pc:TextEquiv>
+                <pc:Unicode></pc:Unicode>
+            </pc:TextEquiv>
+        </pc:TextRegion>
+        <pc:SeparatorRegion id="region_2">
+            <pc:Coords points="426,2195 1490,2195 1490,2304 426,2304"/>
+        </pc:SeparatorRegion>
+    </pc:Page>
+</pc:PcGts>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sioc="http://rdfs.org/sioc/ns#"
+  xmlns:sioct="http://rdfs.org/sioc/types#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+<head>
+<meta charset="utf-8" />
+<link rel="shortcut icon" href="http://www.ocr-d.de/sites/default/files/Logo-01-00-klein.ico" type="image/vnd.microsoft.icon" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link rel="canonical" href="/gt" />
+<meta name="Generator" content="Drupal 7 (http://drupal.org)" />
+<link rel="shortlink" href="/node/45" />
+<title>Ground Truth | OCR-D.de</title>
+<style type="text/css" media="all">
+@import url("http://www.ocr-d.de/modules/system/system.base.css?p4v8w9");
+@import url("http://www.ocr-d.de/modules/system/system.menus.css?p4v8w9");
+@import url("http://www.ocr-d.de/modules/system/system.messages.css?p4v8w9");
+@import url("http://www.ocr-d.de/modules/system/system.theme.css?p4v8w9");
+</style>
+<style type="text/css" media="all">
+@import url("http://www.ocr-d.de/modules/comment/comment.css?p4v8w9");
+@import url("http://www.ocr-d.de/modules/field/theme/field.css?p4v8w9");
+@import url("http://www.ocr-d.de/modules/node/node.css?p4v8w9");
+@import url("http://www.ocr-d.de/modules/search/search.css?p4v8w9");
+@import url("http://www.ocr-d.de/sites/all/modules/sheetnode/css/sheetnode.css?p4v8w9");
+@import url("http://www.ocr-d.de/modules/user/user.css?p4v8w9");
+@import url("http://www.ocr-d.de/sites/all/modules/views/css/views.css?p4v8w9");
+@import url("http://www.ocr-d.de/sites/all/modules/ckeditor/css/ckeditor.css?p4v8w9");
+</style>
+<style type="text/css" media="all">
+@import url("http://www.ocr-d.de/sites/all/modules/ctools/css/ctools.css?p4v8w9");
+</style>
+<style type="text/css" media="all">
+@import url("http://www.ocr-d.de/sites/all/themes/venture_theme/style.css?p4v8w9");
+@import url("http://www.ocr-d.de/sites/all/themes/venture_theme/css/responsive.css?p4v8w9");
+</style>
+<script type="text/javascript" src="http://www.ocr-d.de/sites/all/modules/jquery_update/replace/jquery/1.10/jquery.min.js?v=1.10.2"></script>
+<script type="text/javascript" src="http://www.ocr-d.de/misc/jquery.once.js?v=1.2"></script>
+<script type="text/javascript" src="http://www.ocr-d.de/misc/drupal.js?p4v8w9"></script>
+<script type="text/javascript" src="http://www.ocr-d.de/sites/all/themes/venture_theme/js/retina.js?p4v8w9"></script>
+<script type="text/javascript" src="http://www.ocr-d.de/sites/all/themes/venture_theme/js/plugins.js?p4v8w9"></script>
+<script type="text/javascript" src="http://www.ocr-d.de/sites/all/themes/venture_theme/js/global.js?p4v8w9"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"venture_theme","theme_token":"QsKk2qELoN38TmzP2XmDzgtk4-4gi1UGGcrl5trZu0s","js":{"sites\/all\/modules\/jquery_update\/replace\/jquery\/1.10\/jquery.min.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/themes\/venture_theme\/js\/retina.js":1,"sites\/all\/themes\/venture_theme\/js\/plugins.js":1,"sites\/all\/themes\/venture_theme\/js\/global.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/comment\/comment.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"sites\/all\/modules\/sheetnode\/css\/sheetnode.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/views\/css\/views.css":1,"sites\/all\/modules\/ckeditor\/css\/ckeditor.css":1,"sites\/all\/modules\/ctools\/css\/ctools.css":1,"sites\/all\/themes\/venture_theme\/style.css":1,"sites\/all\/themes\/venture_theme\/css\/responsive.css":1}},"urlIsAjaxTrusted":{"\/gt":true}});
+//--><!]]>
+</script>
+<!--[if lt IE 9]><script src="/sites/all/themes/venture_theme/js/html5.js"></script><![endif]-->
+</head>
+<body class="html not-front not-logged-in one-sidebar sidebar-first page-node page-node- page-node-45 node-type-page">
+    <div id="wrap">
+  <div id="header-wrap" class="clr fixed-header">
+    <header id="header" class="site-header clr container">
+      <div id="logo" class="clr">
+                <div id="site-logo"><a href="/" title="Home">
+          <img src="http://www.ocr-d.de/sites/default/files/Header1-Text-gold_4.png" alt="Home" />
+        </a></div>              </div>
+      <div id="sidr-close"><a href="#sidr-close" class="toggle-sidr-close"></a></div>
+      <div id="site-navigation-wrap">
+        <a href="#sidr-main" id="navigation-toggle"><span class="fa fa-bars"></span>Menu</a>
+        <nav id="site-navigation" class="navigation main-navigation clr" role="navigation">
+          <div id="main-menu" class="menu-main-container">
+            <ul class="menu"><li class="first leaf"><a href="/" title="">Home</a></li>
+<li class="expanded"><a href="/node/1">Das Projekt</a><ul class="menu"><li class="first leaf"><a href="/live" title="Aktuelle Einblicke in unsere Arbeit">OCR-D live</a></li>
+<li class="leaf"><a href="/profil">Kurzdarstellung &amp; Projektziele</a></li>
+<li class="leaf"><a href="/node/62">Wissenschaftlicher Beirat</a></li>
+<li class="leaf"><a href="/personen">Projektbeteiligte</a></li>
+<li class="leaf"><a href="/modulprojekte">Modulprojekte</a></li>
+<li class="last leaf"><a href="/publikationen">Publikationen</a></li>
+</ul></li>
+<li class="expanded active-trail"><a href="/gt" class="active-trail active">Ground Truth</a><ul class="menu"><li class="first collapsed"><a href="/daten">Daten</a></li>
+<li class="last leaf"><a href="/gt_guidelines">Ground Truth Guidelines</a></li>
+</ul></li>
+<li class="leaf"><a href="/kontakt">Kontakt</a></li>
+<li class="collapsed"><a href="/node/3">Impressum</a></li>
+<li class="last collapsed"><a href="/eng">English</a></li>
+</ul>          </div>
+        </nav>
+      </div>
+    </header>
+  </div>
+
+  
+
+  
+
+  <div id="main" class="site-main container clr">
+        <div id="primary" class="content-area clr">
+      <section id="content" role="main" class="site-content left-content clr">
+        <div id="breadcrumbs"><h2 class="element-invisible">You are here</h2><nav class="breadcrumb"><a href="/">Home</a> » Ground Truth</nav></div>                        <div id="content-wrap">
+                    <h1 class="page-title">Ground Truth</h1> 
+                                                  <div class="region region-content">
+  <div id="block-system-main" class="block block-system">
+
+      
+  <div class="content">
+                        <span property="dc:title" content="Ground Truth" class="rdf-meta element-hidden"></span>  
+      
+    
+  <div class="content">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><p><a href="http://www.ocr-d.de/daten">Ground Truth Korpus</a></p>
+<p><a href="http://www.ocr-d.de/gt_guidelines">Ground Truth Guidelines</a></p>
+</div></div></div>  </div>
+
+      <footer>
+          </footer>
+  
+    </div>
+  
+</div> <!-- /.block -->
+</div>
+ <!-- /.region -->
+        </div>
+      </section>
+
+              <aside id="secondary" class="sidebar-container" role="complementary">
+         <div class="region region-sidebar-first">
+  <div id="block-search-form" class="block block-search">
+
+      
+  <div class="content">
+    <form action="/gt" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input title="Enter the terms you wish to search for." type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input type="submit" id="edit-submit" name="op" value="Search" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-Qqe3oIJT2Ml0tChhtOyk-IzisZyPaZMCihG_SB4QZU4" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>  </div>
+  
+</div> <!-- /.block -->
+<div id="block-menu-menu-useful-links" class="block block-menu">
+
+        <h2 ><span>Useful links</span></h2>
+    
+  <div class="content">
+    <ul class="menu"><li class="first leaf"><a href="https://github.com/OCR-D/" title="">OCR-D auf GitHub</a></li>
+<li class="leaf"><a href="https://gitter.im/OCR-D/Lobby" title="">OCR-D auf Gitter</a></li>
+<li class="leaf"><a href="http://www.ocr-d.de/node/58" title="">Termine &amp; Veranstaltungen</a></li>
+<li class="last leaf"><a href="https://www.zotero.org/groups/ocr-d" title="">Technology Watch auf Zotero</a></li>
+</ul>  </div>
+  
+</div> <!-- /.block -->
+<div id="block-system-main-menu" class="block block-system block-menu">
+
+        <h2 ><span>Main menu</span></h2>
+    
+  <div class="content">
+    <ul class="menu"><li class="first leaf"><a href="/" title="">Home</a></li>
+<li class="expanded"><a href="/node/1">Das Projekt</a><ul class="menu"><li class="first leaf"><a href="/live" title="Aktuelle Einblicke in unsere Arbeit">OCR-D live</a></li>
+<li class="leaf"><a href="/profil">Kurzdarstellung &amp; Projektziele</a></li>
+<li class="leaf"><a href="/node/62">Wissenschaftlicher Beirat</a></li>
+<li class="leaf"><a href="/personen">Projektbeteiligte</a></li>
+<li class="leaf"><a href="/modulprojekte">Modulprojekte</a></li>
+<li class="last leaf"><a href="/publikationen">Publikationen</a></li>
+</ul></li>
+<li class="expanded active-trail"><a href="/gt" class="active-trail active">Ground Truth</a><ul class="menu"><li class="first collapsed"><a href="/daten">Daten</a></li>
+<li class="last leaf"><a href="/gt_guidelines">Ground Truth Guidelines</a></li>
+</ul></li>
+<li class="leaf"><a href="/kontakt">Kontakt</a></li>
+<li class="collapsed"><a href="/node/3">Impressum</a></li>
+<li class="last collapsed"><a href="/eng">English</a></li>
+</ul>  </div>
+  
+</div> <!-- /.block -->
+</div>
+ <!-- /.region -->
+        </aside> 
+          </div>
+  </div>
+
+  
+  <footer id="copyright-wrap" class="clear">
+    <div id="copyright">Copyright &copy; 2019, <a href="/">OCR-D.de</a>. Theme by  <a href="http://www.devsaran.com" title="Devsaran" target="_blank">Devsaran</a>.</div>
+  </footer>
+</div>  </body>
+</html>

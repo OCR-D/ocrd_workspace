@@ -1,0 +1,68 @@
+buildscript {
+    repositories { 
+        mavenLocal() 
+        mavenCentral()
+        jcenter()
+    }
+}
+
+plugins { 
+  id "com.github.kt3k.coveralls" version "2.8.1" 
+}
+
+apply plugin: 'java'
+apply plugin: 'jacoco'
+apply plugin: 'maven'
+
+description = 'Tools to handle OCR-D workspaces.'
+group = 'edu.kit.ocrd'
+version = '0.1.0'
+
+jar {
+    baseName = 'ocrd-workspace'
+    version =  '0.1.0'
+}
+
+repositories { 
+    mavenLocal() 
+    mavenCentral()
+    jcenter()
+    maven {
+        url "./localRepo"
+    }
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+
+
+
+
+dependencies {
+    // Local dependencies
+    compile("org.fzk.ipe:Tools:1.6")
+    compile("jaxen:jaxen:1.1.6")
+    compile("org.jdom:jdom:1.1")
+    
+    compile("org.apache.tika:tika-parsers:1.22")
+    
+    // Test
+    testCompile("junit:junit:4.12")
+}
+
+jacocoTestReport {
+  group = "Reporting"
+  reports {
+    xml.enabled true
+    html.enabled true
+    html.destination "${buildDir}/reports/coverage"
+  }
+  afterEvaluate {
+    classDirectories = files(classDirectories.files.collect {
+        fileTree(dir: it, exclude: [
+                    '**/CrudRunner.class'
+          ])
+      })
+  }
+}

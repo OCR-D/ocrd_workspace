@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pc:PcGts xmlns:pc="http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15">
+    <pc:Metadata>
+        <pc:Creator>Deutsches Textarchiv</pc:Creator>
+        <pc:Created>2018-03-22T08:29:37</pc:Created>
+        <pc:LastChange>2019-09-23T15:29:23</pc:LastChange>
+    </pc:Metadata>
+    <pc:Page imageFilename="OCR-D-IMG/OCR-D-IMG_0003.jpg" imageWidth="1995" imageHeight="3018" type="content">
+        <pc:Border>
+            <pc:Coords points="1985,2951 1985,25 11,25 11,2951"/>
+        </pc:Border>
+        <pc:ReadingOrder>
+            <pc:OrderedGroup id="ro357564684568544579089" caption="Regions reading order">
+                <pc:RegionRefIndexed index="0" regionRef="r1"/>
+                <pc:RegionRefIndexed index="1" regionRef="r0"/>
+                <pc:RegionRefIndexed index="2" regionRef="region_1"/>
+                <pc:RegionRefIndexed index="3" regionRef="r2"/>
+                <pc:RegionRefIndexed index="4" regionRef="r3"/>
+                <pc:RegionRefIndexed index="5" regionRef="r4"/>
+                <pc:RegionRefIndexed index="6" regionRef="region_2"/>
+                <pc:RegionRefIndexed index="7" regionRef="r5"/>
+            </pc:OrderedGroup>
+        </pc:ReadingOrder>
+        <pc:TextRegion id="region_1" custom="#column" type="paragraph">
+            <pc:Coords points="296,273 1099,273 1099,791 296,791"/>
+            <pc:TextEquiv>
+                <pc:Unicode></pc:Unicode>
+            </pc:TextEquiv>
+        </pc:TextRegion>
+        <pc:TextRegion id="region_2" custom="#column" type="paragraph">
+            <pc:Coords points="1165,273 1969,273 1969,2277 1165,2277"/>
+            <pc:TextEquiv>
+                <pc:Unicode></pc:Unicode>
+            </pc:TextEquiv>
+        </pc:TextRegion>
+        <pc:TextRegion id="r0" type="header">
+            <pc:Coords points="1240,237 1240,181 1003,181 1003,237"/>
+            <pc:TextEquiv>
+                <pc:Unicode></pc:Unicode>
+            </pc:TextEquiv>
+        </pc:TextRegion>
+        <pc:TextRegion id="r1" type="page-number">
+            <pc:Coords points="451,233 451,181 340,181 340,233"/>
+            <pc:TextEquiv>
+                <pc:Unicode></pc:Unicode>
+            </pc:TextEquiv>
+        </pc:TextRegion>
+        <pc:TextRegion id="r2" type="paragraph">
+            <pc:Coords points="1062,959 1062,833 329,833 329,959"/>
+            <pc:TextEquiv>
+                <pc:Unicode></pc:Unicode>
+            </pc:TextEquiv>
+        </pc:TextRegion>
+        <pc:TextRegion id="r3" type="paragraph">
+            <pc:Coords points="1107,2368 1107,1000 351,1000 351,2368"/>
+            <pc:TextEquiv>
+                <pc:Unicode></pc:Unicode>
+            </pc:TextEquiv>
+        </pc:TextRegion>
+        <pc:TextRegion id="r4" type="paragraph">
+            <pc:Coords points="1103,2651 1103,2429 366,2429 366,2651"/>
+            <pc:TextEquiv>
+                <pc:Unicode></pc:Unicode>
+            </pc:TextEquiv>
+        </pc:TextRegion>
+        <pc:TextRegion id="r5" type="paragraph">
+            <pc:Coords points="1948,2629 1948,2307 1165,2307 1165,2629"/>
+            <pc:TextEquiv>
+                <pc:Unicode></pc:Unicode>
+            </pc:TextEquiv>
+        </pc:TextRegion>
+        <pc:SeparatorRegion id="r6">
+            <pc:Coords points="1152,2645 1133,305 1110,302 1125,2645"/>
+        </pc:SeparatorRegion>
+    </pc:Page>
+</pc:PcGts>
