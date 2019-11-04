@@ -60,9 +60,7 @@ jacocoTestReport {
   }
   afterEvaluate {
     classDirectories = files(classDirectories.files.collect {
-        fileTree(dir: it, exclude: [
-                    '**/CrudRunner.class'
-          ])
+        fileTree(dir: it)
       })
   }
 }

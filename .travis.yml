@@ -16,7 +16,7 @@ branches:
   - jUnitTests
   
 script:
-- sh ./gradlew build
+- sh ./gradlew clean check jacocoTestReport
 
 after_success:
 - "./gradlew coveralls"
