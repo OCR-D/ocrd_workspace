@@ -21,12 +21,12 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.logging.Level;
 import org.apache.tika.Tika;
 import org.fzk.tools.xml.JaxenUtil;
 import org.jdom.Document;
@@ -36,7 +36,23 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Utility handling METS document.
+ * Utility handling/validating METS document. For validation see documentation
+ * at: https://ocr-d.github.io/mets 
+ * 
+ * Mandatory: 
+ * - Mets has to be valid against mets.xsd
+ * - Unique ID for the document processed
+ * - File Group
+ *    - must have one mime-type
+ *    - Grouping files by page
+ * - There is exactly one physical map
+ * - Each page mets:div[@TYPE="page"] for every page
+ * - File
+ *     - Media Type for PAGE XML MIMETYPE attribute set to application/vnd.prima.page+xml.
+ *     - Check mimetype for images.
+ * - Semantic labels: Check for correct syntax.
+ *
+ * Syntax for file groups and file IDs are only recommondations.
  */
 public class MetsUtil {
 
@@ -57,62 +73,143 @@ public class MetsUtil {
   /**
    * Title of document.
    */
-  private static final String TITLE = "title";
+  protected static final String TITLE = "title";
   /**
    * Subtitle of document.
    */
-  private static final String SUB_TITLE = "subtitle";
+  protected static final String SUB_TITLE = "subtitle";
   /**
    * Author of document.
    */
-  private static final String AUTHOR = "author";
+  protected static final String AUTHOR = "author";
   /**
    * License of document.
    */
-  private static final String LICENSE = "license";
+  protected static final String LICENSE = "license";
   /**
    * Language of document.
    */
-  private static final String LANGUAGE = "language";
+  protected static final String LANGUAGE = "language";
   /**
    * Year of document.
    */
-  private static final String YEAR = "year";
+  protected static final String YEAR = "year";
   /**
    * Number of pages of document.
    */
-  private static final String NUMBER_OF_IMAGES = "number_of_images";
+  protected static final String NUMBER_OF_IMAGES = "number_of_images";
   /**
    * Classifications of document.
    */
-  private static final String CLASSIFICATION = "classification";
+  protected static final String CLASSIFICATION = "classification";
   /**
    * Genres of document.
    */
-  private static final String GENRE = "genre";
+  protected static final String GENRE = "genre";
   /**
    * Publisher of document.
    */
-  private static final String PUBLISHER = "publisher";
+  protected static final String PUBLISHER = "publisher";
   /**
    * Physical description of document.
    */
-  private static final String PHYSICAL_DESCRIPTION = "physical_description";
+  protected static final String PHYSICAL_DESCRIPTION = "physical_description";
   /**
    * Record identifier (PPN) of document.
    */
-  private static final String PPN = "PPN";
+  protected static final String PPN = "PPN";
   
+  /** 
+   * File Group
+   */
+  protected static final String FILE_GROUPS = "filegrp";
+  /**
+   * Physical Map
+   */
+  protected static final String PHYSICAL_MAP = "physicalMap";
+  /**
+   * Page nodes
+   */
+  protected static final String PAGE_NODES = "pageNodes";
+  /**
+   * Unique identifier
+   */
+  protected static final String UNIQUE_IDENTIFIER = "uniqueIdentifier";
+  /**
+   * Physical sequence.
+   */
+  protected static final String PHYSICAL_SEQUENCE = "physicalSequence";
+  /**
+   * Map holding all relevant X-paths for METS.
+   */
+  protected static final Map<String, String> metsMap;
+
+  static {
+    Map<String, String> dummyMap = new HashMap<>();
+    dummyMap.put(TITLE, "/mets:mets/mets:dmdSec/mets:mdWrap/mets:xmlData/mods:mods/mods:titleInfo/mods:title[not(@type)]");
+    dummyMap.put(SUB_TITLE, "/mets:mets/mets:dmdSec/mets:mdWrap/mets:xmlData/mods:mods/mods:titleInfo/mods:subTitle[not(@type)]");
+    dummyMap.put(YEAR, "/mets:mets/mets:dmdSec/mets:mdWrap/mets:xmlData/mods:mods/mods:originInfo/mods:dateIssued");
+    dummyMap.put(LICENSE, "//mets:rightsMD/descendant::*");
+    dummyMap.put(AUTHOR, "//mods:name/mods:role/mods:roleTerm[text()='aut']/../../mods:displayForm");
+    dummyMap.put(NUMBER_OF_IMAGES, "/mets:mets/mets:fileSec/mets:fileGrp[@USE='OCR-D-IMG']/mets:file");
+    dummyMap.put(PUBLISHER, "//mods:publisher[not(@keydate = 'yes')]");
+    dummyMap.put(PHYSICAL_DESCRIPTION, "//mods:physicalDescription/mods:extent");
+    dummyMap.put(PPN, "//mods:mods/mods:recordInfo/mods:recordIdentifier[1]");
+    dummyMap.put(LANGUAGE, "//mods:languageTerm");
+    dummyMap.put(CLASSIFICATION, "//mods:classification");
+    dummyMap.put(GENRE, "//mods:genre");
+     dummyMap.put(FILE_GROUPS, "//mets:fileGrp");
+     dummyMap.put(PHYSICAL_MAP, "//mets:structMap[@TYPE='PHYSICAL']");
+     dummyMap.put(PAGE_NODES, "//mets:div[@TYPE='page']");
+     dummyMap.put(UNIQUE_IDENTIFIER, "//mods:identifier[@type='purl' or @type='url' or @type='urn' or @type='handle' or @type='dtaid']");
+     dummyMap.put(PHYSICAL_SEQUENCE, "//mets:div[@TYPE='physSequence']");
+     metsMap = Collections.unmodifiableMap(dummyMap);
+  }
+  /**
+   * Error messages: Missing identifier!
+   */
   public static final String MISSING_UNIQUE_IDENTIFIER = "Missing unique identifier!";
-  public static final String  MISSING_PHYSICAL_MAP = "Missing one or more than one physical map!";
+  /**
+   * Error messages: Missing or more than one physical map.
+   */
+  public static final String MISSING_PHYSICAL_MAP = "Missing one or more than one physical map!";
+  /**
+   * Error messages: USE of file group has to be unique.
+   */
   public static final String USE_FILE_GRP_NOT_UNIQUE = "USE of fileGrp is not unique: ";
+  /**
+   * Error messages: Different mimetypes inside file group.
+   */
   public static final String DIFFERENT_MIMETYPES = "Different mimetypes in filegrp with USE: ";
+  /**
+   * Error messages: Wrong semantic label.
+   */
   public static final String WRONG_SEMANTIC_LABEL = "Wrong semantic label inside METS! - ";
+  /**
+   * Error messages: Missing file.
+   */
   public static final String FILE_NOT_EXISTS = "File doesn't exist: ";
+  /**
+   * Error messages: Wrong mimetype
+   */
   public static final String WRONG_MIMETYPE = "Wrong mimetype for ID: ";
+  /**
+   * Error messages: Invalid XML
+   */
+  public static final String PARSING_ERROR = "Error parsing XML!";
+  /**
+   * Warn messages: Language missing! (optional)
+   */
   public static final String MISSING_LANGUAGE = "Language field missing inside METS!";
+  /**
+   * Warn messages: Genre missing (optional)
+   */
   public static final String MISSING_GENRE = "Genre field missing inside METS!";
-  public static final String   MISSING_CLASSIFICATION = "Classification field missing inside METS!";
+  /**
+   * Warn messages: Classification missing (optional)
+   */
+  public static final String MISSING_CLASSIFICATION = "Classification field missing inside METS!";
+
   /**
    * Extract MetsFile instances from METS document. Tests: - unique name for USE
    * - same mimetype inside file grp but don't test - structure of USE (e.g.
@@ -131,7 +228,7 @@ public class MetsUtil {
     String newLine = System.getProperties().getProperty("line.separator");
     Tika tika = new Tika();
     LOGGER.info("Validate files from METS document.");
-    List nodes = JaxenUtil.getNodes(metsDocument, "//mets:fileGrp", namespaces);
+    List nodes = JaxenUtil.getNodes(metsDocument, metsMap.get(FILE_GROUPS), namespaces);
     LOGGER.trace("Found {} fileGrp(s)", nodes.size());
     for (Object node : nodes) {
       Element fileGrpElement = (Element) node;
@@ -232,16 +329,6 @@ public class MetsUtil {
   public static boolean validateMetadataFromMets(final Document metsDocument) throws Exception {
     boolean valid = true;
     // define XPaths
-    Map<String, String> metsMap = new HashMap<>();
-    metsMap.put(TITLE, "/mets:mets/mets:dmdSec/mets:mdWrap/mets:xmlData/mods:mods/mods:titleInfo/mods:title[not(@type)]");
-    metsMap.put(SUB_TITLE, "/mets:mets/mets:dmdSec/mets:mdWrap/mets:xmlData/mods:mods/mods:titleInfo/mods:subTitle[not(@type)]");
-    metsMap.put(YEAR, "/mets:mets/mets:dmdSec/mets:mdWrap/mets:xmlData/mods:mods/mods:originInfo/mods:dateIssued");
-    metsMap.put(LICENSE, "//mets:rightsMD/descendant::*");
-    metsMap.put(AUTHOR, "//mods:name/mods:role/mods:roleTerm[text()='aut']/../../mods:displayForm");
-    metsMap.put(NUMBER_OF_IMAGES, "/mets:mets/mets:fileSec/mets:fileGrp[@USE='OCR-D-IMG']/mets:file");
-    metsMap.put(PUBLISHER, "//mods:publisher[not(@keydate = 'yes')]");
-    metsMap.put(PHYSICAL_DESCRIPTION, "//mods:physicalDescription/mods:extent");
-    metsMap.put(PPN, "//mods:mods/mods:recordInfo/mods:recordIdentifier[1]");
     Element root = metsDocument.getRootElement();
     String[] values = JaxenUtil.getValues(root, metsMap.get(TITLE), namespaces);
     if (values.length >= 1) {
@@ -302,9 +389,6 @@ public class MetsUtil {
    */
   public static boolean validLanguageMetadataFromMets(final Document metsDocument) throws Exception {
     boolean valid = false;
-    Map<String, String> metsMap = new HashMap<>();
-    // define XPaths
-    metsMap.put(LANGUAGE, "//mods:languageTerm");
     Element root = metsDocument.getRootElement();
     String[] values = JaxenUtil.getValues(root, metsMap.get(LANGUAGE), namespaces);
     if (values.length >= 1) {
@@ -334,9 +418,6 @@ public class MetsUtil {
    */
   public static boolean validateClassificationMetadataFromMets(final Document metsDocument) throws Exception {
     boolean valid = false;
-    Map<String, String> metsMap = new HashMap<>();
-    // define XPaths
-    metsMap.put(CLASSIFICATION, "//mods:classification");
     Element root = metsDocument.getRootElement();
     String[] values = JaxenUtil.getValues(root, metsMap.get(CLASSIFICATION), namespaces);
     if ((values != null) && (values.length >= 1)) {
@@ -366,9 +447,6 @@ public class MetsUtil {
    */
   public static boolean validateGenreMetadataFromMets(final Document metsDocument) throws Exception {
     boolean valid = false;
-    Map<String, String> metsMap = new HashMap<>();
-    // define XPaths
-    metsMap.put(GENRE, "//mods:genre");
     Element root = metsDocument.getRootElement();
     String[] values = JaxenUtil.getValues(root, metsMap.get(GENRE), namespaces);
     if (values.length >= 1) {
@@ -388,21 +466,19 @@ public class MetsUtil {
   }
 
   /**
-   * Extract all ground truth metadata from METS.
+   * Validate all ground truth metadata from METS.
    *
    * @param metsDocument METS file.
-   * @return List of PageMetadata holding all ground truth metadata.
-   *
-   * @throws Exception An error occurred during parsing METS file.
+   * @return true or Exception if not valid.
    */
-  public static boolean validateFeaturesFromMets(final Document metsDocument) throws Exception {
+  public static boolean validateFeaturesFromMets(final Document metsDocument) {
     boolean valid = true;
     String invalidSemanticLabel = null;
     Element root = metsDocument.getRootElement();
-    List physicalList = JaxenUtil.getNodes(root, "//mets:structMap[@TYPE='PHYSICAL']", namespaces);
+    List physicalList = JaxenUtil.getNodes(root, metsMap.get(PHYSICAL_MAP), namespaces);
     if (!physicalList.isEmpty()) {
       Element structMap = (Element) physicalList.get(0);
-      List pageList = JaxenUtil.getNodes(structMap, "//mets:div[@TYPE='page']", namespaces);
+      List pageList = JaxenUtil.getNodes(structMap, metsMap.get(PAGE_NODES), namespaces);
       if (!pageList.isEmpty()) {
         for (Object pageObject : pageList) {
           // Determine order, id and dmdid. 
@@ -446,9 +522,9 @@ public class MetsUtil {
    * @param metsDocument Document of Mets file
    * @return valid or Exception if not.
    */
-  public static boolean validateUniqueIdentifier(Document metsDocument) throws Exception {
+  public static boolean validateUniqueIdentifier(Document metsDocument) {
     boolean valid = false;
-    String[] values = JaxenUtil.getValues(metsDocument, "//mods:identifier[@type='purl' or @type='url' or @type='urn' or @type='handle' or @type='dtaid']", namespaces);
+    String[] values = JaxenUtil.getValues(metsDocument,metsMap.get(UNIQUE_IDENTIFIER) , namespaces);
     if ((values != null) && (values.length > 0)) {
       valid = true;
     }
@@ -466,9 +542,9 @@ public class MetsUtil {
    * @param metsDocument Document of Mets file
    * @return valid or Exception if not.
    */
-  public static boolean validatePhysicalMap(Document metsDocument) throws Exception {
+  public static boolean validatePhysicalMap(Document metsDocument) {
     boolean valid = false;
-    String[] values = JaxenUtil.getValues(metsDocument, "//mets:div[@TYPE='physSequence']", namespaces);
+    String[] values = JaxenUtil.getValues(metsDocument, metsMap.get(PHYSICAL_SEQUENCE), namespaces);
     if ((values != null) && (values.length == 1)) {
       valid = true;
     }
@@ -499,16 +575,18 @@ public class MetsUtil {
    *
    * @param metsFile Mets file
    * @return valid or Exception if not.
+   * @throws java.lang.Exception Errors found!
    */
-  public static boolean validateCompleteMets(File metsFile) throws Exception {
-    boolean valid = false;
-    valid = XmlUtil.validateXml(metsFile);
-    Document metsDocument = JaxenUtil.getDocument(metsFile);
-    
+  public static boolean validateCompleteMets(File metsFile) {
+    boolean valid;
+    valid = MetsUtil.validateMets(metsFile);
+    Document metsDocument = XmlUtil.getDocument(metsFile);
+
+    valid |= MetsUtil.validateUniqueIdentifier(metsDocument);
     valid |= MetsUtil.validateFeaturesFromMets(metsDocument);
     valid |= MetsUtil.validatePhysicalMap(metsDocument);
     valid |= MetsUtil.validateMetsFiles(metsDocument, metsFile.toPath().getParent());
-    
+
     return valid;
   }
 }

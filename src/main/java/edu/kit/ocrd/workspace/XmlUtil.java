@@ -153,19 +153,13 @@ public class XmlUtil {
    * @param xmlFile xml file.
    * @return true or exception
    */
-  public static boolean validateXml(final File xmlFile) throws WorkspaceException {
+  public static boolean validateXml(final File xmlFile) {
     boolean valid = false;
     Schema schema = null;
     String namespace = null;
-    try {
-      Document document = JaxenUtil.getDocument(xmlFile);
-      namespace = getNamespace(document);
-      schema = xsdMap.get(namespace);
-    } catch (Exception ex) {
-      String message = ERROR_VALIDATING_XML;
-      LOGGER.error(message, ex);
-      throw new WorkspaceException(message, ex);
-    }
+    Document document = getDocument(xmlFile);
+    namespace = getNamespace(document);
+    schema = xsdMap.get(namespace);
     if (schema != null) {
       try {
         SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
@@ -185,4 +179,21 @@ public class XmlUtil {
     return valid;
   }
 
+  /**
+   * Get instance of documnent for given file.
+   *
+   * @param xmlFile xml file.
+   * @return Document or exception
+   */
+  public static Document getDocument(final File xmlFile) {
+    Document document = null;
+    try {
+      document = JaxenUtil.getDocument(xmlFile);
+    } catch (Exception ex) {
+      String message = ERROR_VALIDATING_XML;
+      LOGGER.error(message, ex);
+      throw new WorkspaceException(message, ex);
+    }
+    return document;
+  }
 }

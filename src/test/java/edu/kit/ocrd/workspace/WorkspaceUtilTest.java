@@ -60,5 +60,50 @@ public class WorkspaceUtilTest {
     boolean result = WorkspaceUtil.validateWorkspace(metsFile);
     assertEquals(expResult, result);
   }
+
+  /**
+   * Test of validateWorkspace method, of class WorkspaceUtil.
+   */
+  @Test
+  public void testValidateWorkspaceMetsNotExists() {
+    System.out.println("testValidateWorkspaceMetsNotExists");
+    File metsFile = new File("src/test/resources/workspace/notExists_mets.xml");
+    try {
+      WorkspaceUtil.validateWorkspace(metsFile);
+      assertTrue(Boolean.FALSE);
+    } catch (WorkspaceException wse) {
+      assertTrue(wse.getMessage().startsWith(WorkspaceUtil.NO_METS_FILE));
+    }
+  }
+
+  /**
+   * Test of validateIdentifierFromMets method, of class MetsUtil.
+   */
+  @Test
+  public void testValidateWorkspaceFromInvalidMets() throws Exception {
+    System.out.println("testValidateWorkspaceFromInvalidMets");
+    File metsFile = new File("src/test/resources/workspace/invalid_identifier_mets.xml");
+    try {
+      WorkspaceUtil.validateWorkspace(metsFile);
+      assertTrue(Boolean.FALSE);
+    } catch (WorkspaceException wse) {
+      assertTrue(wse.getMessage().startsWith(MetsUtil.MISSING_UNIQUE_IDENTIFIER));
+    }
+  }
+
+  /**
+   * Test of validateIdentifierFromMets method, of class MetsUtil.
+   */
+  @Test
+  public void testValidateWorkspaceFromInvalidXml() throws Exception {
+    System.out.println("testValidateWorkspaceFromInvalidXml");
+    File metsFile = new File("src/test/resources/workspace/invalid_xml_mets.xml");
+    try {
+      WorkspaceUtil.validateWorkspace(metsFile);
+      assertTrue(Boolean.FALSE);
+    } catch (WorkspaceException wse) {
+      assertTrue(wse.getMessage().startsWith(XmlUtil.ERROR_VALIDATING_XML));
+    }
+  }
   
 }

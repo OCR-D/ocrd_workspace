@@ -56,6 +56,10 @@ PROCESSOR := [A-Z0-9\-]{3,}
 * Media Type for PAGE XML MIMETYPE attribute set to application/vnd.prima.page+xml.
  */
 public class WorkspaceUtil {
+  /** 
+   * Error message for missing mets file. 
+   */
+  public static final String NO_METS_FILE = "METS file doesn't exist! ";
 
   /**
    * Logger.
@@ -71,7 +75,11 @@ public class WorkspaceUtil {
    */
   public static boolean validateWorkspace(final File metsFile) {
     boolean valid = false;
-    valid = MetsUtil.validateMets(metsFile);
+    if (metsFile.exists()) {
+    valid = MetsUtil.validateCompleteMets(metsFile);
+    } else {
+      throw new WorkspaceException(NO_METS_FILE + " --> " + metsFile.getName());
+    }
     return valid;
   }
 }
