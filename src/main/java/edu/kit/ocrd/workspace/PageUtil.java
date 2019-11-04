@@ -49,7 +49,7 @@ public class PageUtil {
     Namespace[] namespaces = {Namespace.getNamespace("page", pageNamespace)};
     Document metsDocument = JaxenUtil.getDocument(metsFile);
     String[] values = JaxenUtil.getValues(pageDocument, "page:Page/@imageFilename", namespaces);
-    if ((values != null) && (values.length == 1)) {
+    if (values.length == 1) {
       String imageUrl = values[0];
       if (imageUrl.startsWith("file://")) {
         imageUrl = imageUrl.substring(7);

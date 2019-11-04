@@ -108,6 +108,22 @@ public class PageUtilTest {
   }
 
   /**
+   * Test of validateImageUrl method, of class PageUtil.
+   */
+  @Test
+  public void testValidateImageUrlMissingImageFilename() throws Exception {
+    System.out.println("testValidateImageUrlMissingImageFilename");
+    File pageFile = new File("src/test/resources/page/double_page_page.xml");
+    File metsFile = new File("src/test/resources/workspace/page_wrongUrl_mets.xml");
+    try {
+      PageUtil.validateImageUrl(pageFile, metsFile);
+      assertFalse(Boolean.TRUE);
+    } catch (WorkspaceException wse) {
+      assertTrue(wse.getMessage().startsWith(PageUtil.WRONG_IMAGE_URL));
+    }
+  }
+
+  /**
    * Test of validatePage method, of class PageUtil.
    */
   @Test
