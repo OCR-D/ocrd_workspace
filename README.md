@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.com/VolkerHartmann/ocrd_workspace.svg?branch=master)](https://travis-ci.com/VolkerHartmann/repository_metastore)
-[![codecov](https://codecov.io/gh/VolkerHartmann/ocrd_workspace/branch/master/graph/badge.svg)](https://codecov.io/gh/VolkerHartmann/repository_metastore)
+[![Build Status](https://travis-ci.com/VolkerHartmann/ocrd_workspace.svg?branch=master)](https://travis-ci.com/VolkerHartmann/ocrd_workspace)
+[![codecov](https://codecov.io/gh/VolkerHartmann/ocrd_workspace/branch/master/graph/badge.svg)](https://codecov.io/gh/VolkerHartmann/ocrd_workspace)
 # OCR-D Workspace Validator
 
 This java library contains utility classes to validate OCR-D workspaces.
