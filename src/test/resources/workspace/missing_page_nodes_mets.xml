@@ -191,27 +191,27 @@
          <mets:div ID="loc_d1e401" TYPE="Chapter" LABEL=""/>
       </mets:div>
    </mets:structMap>
-   <mets:structMap TYPE="NOT_PHYSICAL">
-      <mets:div TYPE="physSequence1" ID="physroot">
-         <mets:div ID="phys_0001" TYPE="page" DMDID="DMGT_0001" ORDER="1">
+   <mets:structMap TYPE="PHYSICAL">
+      <mets:div TYPE="physSequence" ID="physroot">
+         <mets:div ID="phys_0001" TYPE="no_page" DMDID="DMGT_0001" ORDER="1">
             <mets:fptr FILEID="DEFAULT_0001"/>
             <mets:fptr FILEID="OCR-D-IMG_0001"/>
             <mets:fptr FILEID="OCR-D-GT-SEG-PAGE_0001"/>
             <mets:fptr FILEID="OCR-D-GT-SEG-BLOCK_0001"/>
          </mets:div>
-         <mets:div ID="phys_0002" TYPE="page" DMDID="DMGT_0002" ORDER="2">
+         <mets:div ID="phys_0002" TYPE="no_page" DMDID="DMGT_0002" ORDER="2">
             <mets:fptr FILEID="DEFAULT_0002"/>
             <mets:fptr FILEID="OCR-D-IMG_0002"/>
             <mets:fptr FILEID="OCR-D-GT-SEG-PAGE_0002"/>
             <mets:fptr FILEID="OCR-D-GT-SEG-BLOCK_0002"/>
          </mets:div>
-         <mets:div ID="phys_0003" TYPE="page" DMDID="DMGT_0003" ORDER="3">
+         <mets:div ID="phys_0003" TYPE="no_page" DMDID="DMGT_0003" ORDER="3">
             <mets:fptr FILEID="DEFAULT_0003"/>
             <mets:fptr FILEID="OCR-D-IMG_0003"/>
             <mets:fptr FILEID="OCR-D-GT-SEG-PAGE_0003"/>
             <mets:fptr FILEID="OCR-D-GT-SEG-BLOCK_0003"/>
          </mets:div>
-         <mets:div ID="phys_0004" TYPE="page" DMDID="DMGT_0004" ORDER="4">
+         <mets:div ID="phys_0004" TYPE="no_page" DMDID="DMGT_0004" ORDER="4">
             <mets:fptr FILEID="DEFAULT_0004"/>
             <mets:fptr FILEID="OCR-D-IMG_0004"/>
             <mets:fptr FILEID="OCR-D-GT-SEG-PAGE_0004"/>

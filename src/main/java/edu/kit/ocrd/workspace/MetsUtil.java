@@ -387,7 +387,7 @@ public class MetsUtil {
    *
    * @throws Exception An error occurred during parsing METS file.
    */
-  public static boolean validLanguageMetadataFromMets(final Document metsDocument) throws Exception {
+  public static boolean validateLanguageMetadataFromMets(final Document metsDocument) throws Exception {
     boolean valid = false;
     Element root = metsDocument.getRootElement();
     String[] values = JaxenUtil.getValues(root, metsMap.get(LANGUAGE), namespaces);
@@ -420,7 +420,7 @@ public class MetsUtil {
     boolean valid = false;
     Element root = metsDocument.getRootElement();
     String[] values = JaxenUtil.getValues(root, metsMap.get(CLASSIFICATION), namespaces);
-    if ((values != null) && (values.length >= 1)) {
+    if (values.length >= 1) {
       for (String classification : values) {
         if (classification.trim().length() > 1) {
           valid = true; // validate Classification
@@ -525,7 +525,7 @@ public class MetsUtil {
   public static boolean validateUniqueIdentifier(Document metsDocument) {
     boolean valid = false;
     String[] values = JaxenUtil.getValues(metsDocument,metsMap.get(UNIQUE_IDENTIFIER) , namespaces);
-    if ((values != null) && (values.length > 0)) {
+    if (values.length > 0) {
       valid = true;
     }
     if (!valid) {
@@ -545,7 +545,7 @@ public class MetsUtil {
   public static boolean validatePhysicalMap(Document metsDocument) {
     boolean valid = false;
     String[] values = JaxenUtil.getValues(metsDocument, metsMap.get(PHYSICAL_SEQUENCE), namespaces);
-    if ((values != null) && (values.length == 1)) {
+    if (values.length == 1) {
       valid = true;
     }
     if (!valid) {

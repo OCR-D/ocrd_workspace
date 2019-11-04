@@ -176,6 +176,19 @@ public class MetsUtilTest {
   }
 
   /**
+   * Test of validateMetadataFromMets method, of class MetsUtil.
+   */
+  @Test
+  public void testValidateMetadataFromMetsNoMetadata() throws Exception {
+    System.out.println("testValidateMetadataFromMetsNoMetadata");
+    File metsFile = new File("src/test/resources/workspace/no_metadata_mets.xml");
+    Document metsDocument = JaxenUtil.getDocument(metsFile);
+    boolean expResult = true;
+    boolean result = MetsUtil.validateMetadataFromMets(metsDocument);
+    assertEquals(expResult, result);
+  }
+
+  /**
    * Test of validateIdentifierFromMets method, of class MetsUtil.
    */
   @Test
@@ -226,10 +239,10 @@ public class MetsUtilTest {
   @Test
   public void testValidLanguageMetadataFromMets() throws Exception {
     System.out.println("validLanguageMetadataFromMets");
-    File metsFile = new File("src/test/resources/workspace/mets.xml");
+    File metsFile = new File("src/test/resources/workspace/valid_mets.xml");
     Document metsDocument = JaxenUtil.getDocument(metsFile);
     boolean expResult = true;
-    boolean result = MetsUtil.validLanguageMetadataFromMets(metsDocument);
+    boolean result = MetsUtil.validateLanguageMetadataFromMets(metsDocument);
     assertEquals(expResult, result);
   }
 
@@ -242,7 +255,20 @@ public class MetsUtilTest {
     File metsFile = new File("src/test/resources/workspace/missing_language_mets.xml");
     Document metsDocument = JaxenUtil.getDocument(metsFile);
     boolean expResult = true;
-    boolean result = MetsUtil.validLanguageMetadataFromMets(metsDocument);
+    boolean result = MetsUtil.validateLanguageMetadataFromMets(metsDocument);
+    assertEquals(expResult, result);
+  }
+
+  /**
+   * Test of validLanguageMetadataFromMets method, of class MetsUtil.
+   */
+  @Test
+  public void testEmptyLanguageMetadataFromMets() throws Exception {
+    System.out.println("testEmptyLanguageMetadataFromMets");
+    File metsFile = new File("src/test/resources/workspace/empty_language_mets.xml");
+    Document metsDocument = JaxenUtil.getDocument(metsFile);
+    boolean expResult = true;
+    boolean result = MetsUtil.validateLanguageMetadataFromMets(metsDocument);
     assertEquals(expResult, result);
   }
 
@@ -252,7 +278,7 @@ public class MetsUtilTest {
   @Test
   public void testValidateClassificationMetadataFromMets() throws Exception {
     System.out.println("validateClassificationMetadataFromMets");
-    File metsFile = new File("src/test/resources/workspace/mets.xml");
+    File metsFile = new File("src/test/resources/workspace/valid_mets.xml");
     Document metsDocument = JaxenUtil.getDocument(metsFile);
     boolean expResult = true;
     boolean result = MetsUtil.validateClassificationMetadataFromMets(metsDocument);
@@ -317,7 +343,7 @@ public class MetsUtilTest {
   @Test
   public void testValidateFeaturesFromMets() throws Exception {
     System.out.println("validateFeaturesFromMets");
-    File metsFile = new File("src/test/resources/workspace/mets.xml");
+    File metsFile = new File("src/test/resources/workspace/valid_mets.xml");
     Document metsDocument = JaxenUtil.getDocument(metsFile);
     boolean expResult = true;
     boolean result = MetsUtil.validateFeaturesFromMets(metsDocument);
@@ -338,6 +364,32 @@ public class MetsUtilTest {
     } catch (WorkspaceException wse) {
       assertTrue(wse.getMessage().startsWith(MetsUtil.WRONG_SEMANTIC_LABEL));
     }
+  }
+
+  /**
+   * Test of validateFeaturesFromMets method, of class MetsUtil.
+   */
+  @Test
+  public void testValidateFeaturesFromMetsWithMissingPhysicalMap() throws Exception {
+    System.out.println("testValidateFeaturesFromMetsWithMissingPhysicalMap");
+    File metsFile = new File("src/test/resources/workspace/missing_physical_map_mets.xml");
+    Document metsDocument = JaxenUtil.getDocument(metsFile);
+    boolean expResult = true;
+    boolean result = MetsUtil.validateFeaturesFromMets(metsDocument);
+    assertEquals(expResult, result);
+  }
+
+  /**
+   * Test of validateFeaturesFromMets method, of class MetsUtil.
+   */
+  @Test
+  public void testValidateFeaturesFromMetsWithMissingPageNodes() throws Exception {
+    System.out.println("testValidateFeaturesFromMetsWithMissingPageNodes");
+    File metsFile = new File("src/test/resources/workspace/missing_page_nodes_mets.xml");
+    Document metsDocument = JaxenUtil.getDocument(metsFile);
+    boolean expResult = true;
+    boolean result = MetsUtil.validateFeaturesFromMets(metsDocument);
+    assertEquals(expResult, result);
   }
 
   /**

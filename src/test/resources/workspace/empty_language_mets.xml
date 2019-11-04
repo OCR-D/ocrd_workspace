@@ -37,7 +37,7 @@
                   <mods:subTitle/>
                </mods:titleInfo>
                <mods:language>
-                  <mods:languageTerm authority="iso639-2b" type="code">deu</mods:languageTerm>
+                  <mods:languageTerm authority="iso639-2b" type="code"></mods:languageTerm>
                </mods:language>
                <mods:relatedItem type="series">
                   <mods:titleInfo>
@@ -191,8 +191,8 @@
          <mets:div ID="loc_d1e401" TYPE="Chapter" LABEL=""/>
       </mets:div>
    </mets:structMap>
-   <mets:structMap TYPE="NOT_PHYSICAL">
-      <mets:div TYPE="physSequence1" ID="physroot">
+   <mets:structMap TYPE="PHYSICAL">
+      <mets:div TYPE="physSequence" ID="physroot">
          <mets:div ID="phys_0001" TYPE="page" DMDID="DMGT_0001" ORDER="1">
             <mets:fptr FILEID="DEFAULT_0001"/>
             <mets:fptr FILEID="OCR-D-IMG_0001"/>

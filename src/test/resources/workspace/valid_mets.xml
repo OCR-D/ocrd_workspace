@@ -30,6 +30,7 @@
                </mods:originInfo>
                <mods:classification authority="DTA">Fachtext</mods:classification>
                <mods:classification authority="DTA">Medizin</mods:classification>
+               <mods:classification authority="DTA"></mods:classification>
                <mods:genre>Gedichte</mods:genre>
                <mods:identifier type="purl">http://www.deutschestextarchiv.de/wundt_grundriss_1896</mods:identifier>
                <mods:identifier type="dtaid">16196</mods:identifier>
