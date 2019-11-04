@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
-    <system systemId="http://www.loc.gov/standards/mets/version18/mets.xsd" uri="www.loc.gov/standards/mets/version18/mets.xsd"/>
-    <system systemId="http://www.loc.gov/standards/xlink/xlink.xsd" uri="www.loc.gov/standards/xlink/xlink.xsd"/>
-    <system systemId="http://www.w3.org/1999/xlink" uri="www.w3.org/1999/xlink"/>
-    <system systemId="http://www.loc.gov/mods/v3" uri="www.loc.gov/standards/mods/v3/index"/>
-    <system systemId="http://www.ocr-d.de/GT/" uri="www.ocr-d.de/gt"/>
-</catalog>
