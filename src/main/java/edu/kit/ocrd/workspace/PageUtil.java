@@ -28,7 +28,14 @@ import org.slf4j.LoggerFactory;
  *
  */
 public class PageUtil {
+  /** 
+   * Error mesage for wrong image URL.
+   */
   public static final String WRONG_IMAGE_URL = "Wrong imgage URL inside PAGE: ";
+  /**
+   * Path for image URL.
+   */
+  public static final String IMAGE_PATH = "page:Page/@imageFilename";
   /**
    * Logger.
    */
@@ -48,7 +55,7 @@ public class PageUtil {
     String pageNamespace = XmlUtil.getNamespace(pageDocument);
     Namespace[] namespaces = {Namespace.getNamespace("page", pageNamespace)};
     Document metsDocument = JaxenUtil.getDocument(metsFile);
-    String[] values = JaxenUtil.getValues(pageDocument, "page:Page/@imageFilename", namespaces);
+    String[] values = JaxenUtil.getValues(pageDocument, IMAGE_PATH, namespaces);
     if (values.length == 1) {
       String imageUrl = values[0];
       if (imageUrl.startsWith("file://")) {
