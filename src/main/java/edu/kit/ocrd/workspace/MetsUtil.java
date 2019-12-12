@@ -221,7 +221,7 @@ public class MetsUtil {
    */
   public static boolean validateMetsFiles(Document metsDocument, Path pathToMets) {
     boolean valid = true;
-    Set fileGrp = new HashSet();
+    Set<String> fileGrp = new HashSet<>();
     int noOfFileGrps = 0;
     String mimetypeOfGroup;
     StringBuffer message = new StringBuffer();

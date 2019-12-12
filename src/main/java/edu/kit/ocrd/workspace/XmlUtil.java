@@ -82,7 +82,7 @@ public class XmlUtil {
 
   static {
     // Initialize Map
-    xsdMap = new HashMap();
+    xsdMap = new HashMap<>();
     SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
     for (String xsd : xsdResources) {
       InputStream resourceAsStream = XmlUtil.class.getClassLoader().getResourceAsStream(xsd);
