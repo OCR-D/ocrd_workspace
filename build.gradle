@@ -69,8 +69,8 @@ tasks.withType(JavaCompile) {
 
 publishing {
     publications {
-        "${name}"(MavenPublication) {
-            artifact file("$buildDir/libs/${name}-${version}.jar")
+        mavenJava(MavenPublication) {
+            from components.java
         }
     }
 }
