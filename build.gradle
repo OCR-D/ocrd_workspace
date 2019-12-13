@@ -18,10 +18,7 @@ description = 'Tools to handle/validate OCR-D workspaces.'
 group = 'edu.kit.ocrd'
 version = '0.2.0'
 
-jar {
-  archiveBaseName = 'ocrd-workspace'
-  archiveVersion =  '0.2.0'
-}
+println "Building ${name} version: ${version}"
 
 repositories { 
   mavenLocal() 
@@ -68,5 +65,13 @@ jacocoTestReport {
 tasks.withType(JavaCompile) {
     options.compilerArgs << '-Xlint:unchecked'
     options.deprecation = true
+}
+
+publishing {
+    publications {
+        "${name}"(MavenPublication) {
+            artifact file("$buildDir/libs/${name}-${version}.jar")
+        }
+    }
 }
 
